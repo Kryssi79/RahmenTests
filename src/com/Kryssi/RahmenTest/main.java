@@ -1,6 +1,10 @@
 package com.Kryssi.RahmenTest;
 
+import org.bukkit.Material;
+import org.bukkit.block.*;
 import org.bukkit.entity.ItemFrame;
+import org.bukkit.event.block.BlockRedstoneEvent;
+import org.bukkit.block.Sign;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -17,7 +21,7 @@ public class main extends JavaPlugin
 	public void onEnable()
 	{
 		// Save a copy of the default config.yml if one is not there
-        this.saveDefaultConfig();
+        //this.saveDefaultConfig();
         
 		System.out.println("starte:   RahmenTest - Plugin  ");
 		
@@ -31,6 +35,38 @@ public class main extends JavaPlugin
 	{
 		System.out.println("beende:   RahmenTest - Plugin  ");
 	}
+	
+	
+	
+	
+	public boolean istSchild(Block block)
+	{
+		if (block.getType().equals(Material.WALL_SIGN)) 
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public void handleRedstoneEvent(Block block, BlockRedstoneEvent event, int delayTicks) 
+	{
+        if (istSchild(block)) 
+        {
+        	System.out.println(" plugin:  handleRedstoneEvent()  ");
+            Sign signBlock = (Sign) block.getState();
+            if (signBlock == null) {
+                return;
+            }
+            if (signBlock.getLine(1) == null) {
+                return;
+            }
+            System.out.println("   .getLine(0)  " + signBlock.getLine(0) );
+            System.out.println("   .getLine(1)  " + signBlock.getLine(1) );
+        }
+	}
+            
+            
+            
 	
 	
 }

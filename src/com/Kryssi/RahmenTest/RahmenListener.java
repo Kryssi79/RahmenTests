@@ -35,7 +35,7 @@ public class RahmenListener implements Listener
 		//wenn: am Block  redstone  gebaut/abgebaut   bzw. Signal 
 		Block block = event.getBlock();
 		int iBlockID = block.getTypeId();
-		if(event.getOldCurrent() >=1 ) { return; }
+		if(event.getOldCurrent() >=1 && event.getNewCurrent() == 0 ) { return; }
 		System.out.println(" plugin:  onBlockRedstone()  ");
 		if(plugin.itemFrame1 != null)
 		{
@@ -43,7 +43,13 @@ public class RahmenListener implements Listener
 			//item01.setType(Material.GOLDEN_APPLE);
 			plugin.itemFrame1.setItem(item01);
 		}
+		plugin.handleRedstoneEvent(block.getRelative(0, 0, 0), event, 1);
+		plugin.handleRedstoneEvent(block.getRelative(1, 0, 0), event, 1);
+		plugin.handleRedstoneEvent(block.getRelative(-1, 0, 0), event, 1);
+		plugin.handleRedstoneEvent(block.getRelative(0, 0, 1), event, 1);
+		plugin.handleRedstoneEvent(block.getRelative(0, 0, -1), event, 1);
 	}
+	
 	
 	
 	@EventHandler(priority=EventPriority.NORMAL )
