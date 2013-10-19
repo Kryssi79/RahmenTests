@@ -1,6 +1,7 @@
 package com.Kryssi.RahmenTest;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
 import org.bukkit.entity.ItemFrame;
@@ -37,7 +38,8 @@ public class RahmenListener implements Listener
 	
 	
 	@EventHandler(ignoreCancelled=true)
-    public void onHangingPlaceEvent(HangingPlaceEvent event) {
+    public void onHangingPlaceEvent(HangingPlaceEvent event) 
+	{
         if (event.getEntity() instanceof ItemFrame) 
         {
         	Player player = event.getPlayer();
@@ -46,14 +48,21 @@ public class RahmenListener implements Listener
 	
 	
 	@EventHandler(ignoreCancelled=true)
-    public void onPlayerInteractEntityEvent(PlayerInteractEntityEvent event) 
+    public void onPlayerInteractEntityEvent(PlayerInteractEntityEvent event)
 	{
         if (event.getRightClicked() instanceof ItemFrame) 
         {
+        	System.out.println(" plugin:  onPlayer InteractEntity Event  ");
         	//get the block location of the ItemFrame
             Location itemFrameLocation = event.getRightClicked().getLocation();
             //cast the right clicked on item into an itemFrame
             ItemFrame itemFrame = (ItemFrame) event.getRightClicked();
+            
+            System.out.println("   "+itemFrame.getType());
+            System.out.println("   "+itemFrame.getItem().getType());
+            
+            ItemFrame test = (ItemFrame)(event.getRightClicked());
+            boolean isAir = test.getItem().getType().equals(Material.AIR);
         }
 	}
 	
