@@ -11,8 +11,9 @@ public class main extends JavaPlugin
 	public void onEnable()
 	{
 		System.out.println("starte:   RahmenTest - Plugin  ");
+		
 		// Events: 
-        // getServer().getPluginManager().registerEvents(new BlaListener(this), this);
+        getServer().getPluginManager().registerEvents(new RahmenListener(this), this);
 	}
 	
 	@Override
