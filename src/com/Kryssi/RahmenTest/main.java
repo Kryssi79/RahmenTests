@@ -39,6 +39,15 @@ public class main extends JavaPlugin
 	
 	
 	
+	public void umschauenNachSchild(Block block, BlockRedstoneEvent event)
+	{
+		handleRedstoneEvent(block.getRelative(0, 0, 0), event, 1);
+		handleRedstoneEvent(block.getRelative(1, 0, 0), event, 1);
+		handleRedstoneEvent(block.getRelative(-1, 0, 0), event, 1);
+		handleRedstoneEvent(block.getRelative(0, 0, 1), event, 1);
+		handleRedstoneEvent(block.getRelative(0, 0, -1), event, 1);
+	}
+	
 	public boolean istSchild(Block block)
 	{
 		if (block.getType().equals(Material.WALL_SIGN)) 
@@ -62,6 +71,7 @@ public class main extends JavaPlugin
             }
             System.out.println("   .getLine(0)  " + signBlock.getLine(0) );
             System.out.println("   .getLine(1)  " + signBlock.getLine(1) );
+            System.out.println("   .getLine(2)  " + signBlock.getLine(2) );
         }
 	}
             

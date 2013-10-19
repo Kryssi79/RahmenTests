@@ -29,25 +29,25 @@ public class RahmenListener implements Listener
 	
 	
 	
-	@EventHandler(priority=EventPriority.NORMAL )
+	@EventHandler(priority=EventPriority.HIGH )
 	public void onBlockRedstone(BlockRedstoneEvent event) 
 	{
-		//wenn: am Block  redstone  gebaut/abgebaut   bzw. Signal 
 		Block block = event.getBlock();
 		int iBlockID = block.getTypeId();
+		if (iBlockID==69 || iBlockID==77 || iBlockID==143) {  return; }
 		if(event.getOldCurrent() >=1 && event.getNewCurrent() == 0 ) { return; }
 		System.out.println(" plugin:  onBlockRedstone()  ");
+		System.out.println("     iBlockID = " + iBlockID);
 		if(plugin.itemFrame1 != null)
 		{
 			ItemStack  item01 = new ItemStack( Helper.random_IntRange(2, 128) );
 			//item01.setType(Material.GOLDEN_APPLE);
 			plugin.itemFrame1.setItem(item01);
 		}
-		plugin.handleRedstoneEvent(block.getRelative(0, 0, 0), event, 1);
-		plugin.handleRedstoneEvent(block.getRelative(1, 0, 0), event, 1);
-		plugin.handleRedstoneEvent(block.getRelative(-1, 0, 0), event, 1);
-		plugin.handleRedstoneEvent(block.getRelative(0, 0, 1), event, 1);
-		plugin.handleRedstoneEvent(block.getRelative(0, 0, -1), event, 1);
+		if(event.getNewCurrent()>=1) {
+			plugin.umschauenNachSchild(block, event);
+		}
+		return;
 	}
 	
 	
