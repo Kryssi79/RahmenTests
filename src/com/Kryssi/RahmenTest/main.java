@@ -1,5 +1,6 @@
 package com.Kryssi.RahmenTest;
 
+import org.bukkit.entity.ItemFrame;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -7,6 +8,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class main extends JavaPlugin 
 {
 
+	public ItemFrame itemFrame1;
+	public ItemFrame itemFrame2;
+	public ItemFrame itemFrame3;
+	
+	
 	@Override
 	public void onEnable()
 	{
