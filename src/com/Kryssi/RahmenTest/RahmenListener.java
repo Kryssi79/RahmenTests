@@ -35,6 +35,7 @@ public class RahmenListener implements Listener
 		//wenn: am Block  redstone  gebaut/abgebaut   bzw. Signal 
 		Block block = event.getBlock();
 		int iBlockID = block.getTypeId();
+		if(event.getOldCurrent() >=1 ) { return; }
 		System.out.println(" plugin:  onBlockRedstone()  ");
 		if(plugin.itemFrame1 != null)
 		{

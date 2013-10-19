@@ -16,11 +16,15 @@ public class main extends JavaPlugin
 	@Override
 	public void onEnable()
 	{
+		// Save a copy of the default config.yml if one is not there
+        this.saveDefaultConfig();
+        
 		System.out.println("starte:   RahmenTest - Plugin  ");
 		
 		// Events: 
         getServer().getPluginManager().registerEvents(new RahmenListener(this), this);
 	}
+	
 	
 	@Override
 	public void onDisable()
