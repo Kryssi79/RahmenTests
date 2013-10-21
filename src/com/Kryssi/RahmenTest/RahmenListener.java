@@ -32,6 +32,7 @@ public class RahmenListener implements Listener
 	@EventHandler(priority=EventPriority.HIGH )
 	public void onBlockRedstone(BlockRedstoneEvent event) 
 	{
+		System.out.println("  ");
 		Block block = event.getBlock();
 		int iBlockID = block.getTypeId();
 		if (iBlockID==69 || iBlockID==77 || iBlockID==143) {  return; }
@@ -40,9 +41,9 @@ public class RahmenListener implements Listener
 		System.out.println("     iBlockID = " + iBlockID);
 		if(plugin.itemFrame1 != null)
 		{
-			ItemStack  item01 = new ItemStack( Helper.random_IntRange(2, 128) );
-			//item01.setType(Material.GOLDEN_APPLE);
-			plugin.itemFrame1.setItem(item01);
+			//  funzelt  :-)
+			//ItemStack  item01 = new ItemStack( Helper.random_IntRange(2, 128) );
+			//plugin.itemFrame1.setItem(item01);
 		}
 		if(event.getNewCurrent()>=1) {
 			plugin.umschauenNachSchild(block, event);

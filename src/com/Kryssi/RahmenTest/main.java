@@ -4,7 +4,9 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.*;
 import org.bukkit.entity.ItemFrame;
+import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockRedstoneEvent;
+import org.bukkit.event.hanging.HangingPlaceEvent;
 import org.bukkit.block.Sign;
 import org.bukkit.material.MaterialData;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -88,10 +90,33 @@ public class main extends JavaPlugin
 		MaterialData matData = block.getState().getData();
 		BlockFace blFace = block.getFace(block.getRelative(1, 0, 0));  // Gets the face relation of this block compared to the given block 
 		
+		String sData = oSchildBlock.getData().toString();
+		String sFaceDir = sData.split("facing ")[1].trim();
+		
 		System.out.println(" plugin:  istAutomat()  ");
 		System.out.println("      Loc  = "+oSchildBlock.getLocation() );
 		System.out.println("      dir  = "+dir );
 		System.out.println("   getData = "+oSchildBlock.getData() );
+		System.out.println("   getData = "+sFaceDir );   //  WEST  /  NORTH
+		
+		Block blAnzeige1 = block.getRelative(-3, 0, 2);
+		System.out.println("   blAnzeige1 = "+blAnzeige1.getType() );
+		System.out.println("   Block -1 0 1 = " + block.getRelative(-1, 0, 1).getType() );
+		
+		System.out.println("   Block -2 0 2 = " + block.getRelative(-2, 0, 2).getType() );
+		System.out.println("   Block -2 0 2 = " + block.getRelative(-2, 0, 2).getTypeId() );
+		
+		// getEntity() instanceof ItemFrame) 
+		ItemFrame itemFrameX;
+		System.out.println("   Block -2 0 2 = " + block.getRelative(-2, 0, 2).getData() );
+		System.out.println("   Block -2 0 2 = " + block.getRelative(-2, 0, 2).getDrops() );
+		System.out.println("   Block -2 0 2 = " + block.getRelative(-2, 0, 2).getState() );
+		System.out.println("   Block -2 0 2 = " + block.getRelative(-2, 0, 2).getState().getType() );
+		
+		// https://forums.bukkit.org/threads/item-frame-always-spawn-facing-east.112101/
+		//block.getWorld()
+		Block blockSlot1 = block.getRelative(-3, 0, 1);
+		ItemFrame itemFr1 = (ItemFrame) block.getRelative(-2, 0, 2).getWorld().spawn(blockSlot1.getLocation(), ItemFrame.class);
 		
 		return bRet;
 	}
